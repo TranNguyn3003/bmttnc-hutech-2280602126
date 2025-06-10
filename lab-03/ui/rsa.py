@@ -22,28 +22,34 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(210, 10, 121, 31))
         self.label.setObjectName("label")
+        
+        # Add Generate Keys button
+        self.pushButton_5 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_5.setGeometry(QtCore.QRect(400, 10, 100, 25))
+        self.pushButton_5.setObjectName("pushButton_5")
+        
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_2.setGeometry(QtCore.QRect(40, 60, 41, 20))
         self.label_2.setObjectName("label_2")
-        self.textBrowser = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser = QtWidgets.QTextEdit(self.centralwidget)
         self.textBrowser.setGeometry(QtCore.QRect(80, 60, 191, 61))
         self.textBrowser.setObjectName("textBrowser")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(30, 130, 51, 20))
         self.label_3.setObjectName("label_3")
-        self.textBrowser_2 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_2 = QtWidgets.QTextEdit(self.centralwidget)
         self.textBrowser_2.setGeometry(QtCore.QRect(80, 130, 191, 61))
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(300, 60, 51, 20))
         self.label_4.setObjectName("label_4")
-        self.textBrowser_3 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_3 = QtWidgets.QTextEdit(self.centralwidget)
         self.textBrowser_3.setGeometry(QtCore.QRect(350, 130, 191, 61))
         self.textBrowser_3.setObjectName("textBrowser_3")
         self.label_5 = QtWidgets.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(300, 130, 51, 20))
         self.label_5.setObjectName("label_5")
-        self.textBrowser_4 = QtWidgets.QTextBrowser(self.centralwidget)
+        self.textBrowser_4 = QtWidgets.QTextEdit(self.centralwidget)
         self.textBrowser_4.setGeometry(QtCore.QRect(350, 60, 191, 61))
         self.textBrowser_4.setObjectName("textBrowser_4")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
@@ -69,11 +75,23 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        
+        # Add property mappings for compatibility with rsa_cipher.py
+        self.btn_gen_keys = self.pushButton_5
+        self.btn_encrypt = self.pushButton
+        self.btn_decrypt = self.pushButton_2
+        self.btn_sign = self.pushButton_3
+        self.btn_verify = self.pushButton_4
+        self.txt_plain_text = self.textBrowser
+        self.txt_cipher_text = self.textBrowser_2
+        self.txt_info = self.textBrowser_4
+        self.txt_sign = self.textBrowser_3
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600;\">RSA CIPHER</span></p></body></html>"))
+        self.pushButton_5.setText(_translate("MainWindow", "Generate Keys"))
         self.label_2.setText(_translate("MainWindow", "Plain Text:"))
         self.label_3.setText(_translate("MainWindow", "CipherText:"))
         self.label_4.setText(_translate("MainWindow", "Information:"))
