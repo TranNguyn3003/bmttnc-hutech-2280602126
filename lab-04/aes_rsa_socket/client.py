@@ -9,7 +9,7 @@ import sys
 
 #Initialize client socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(('localhost', 1703))
+client_socket.connect(('localhost', 2126))
 
 #Generate RSA key pair
 client_key = RSA.generate(2048)
