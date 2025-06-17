@@ -17,9 +17,14 @@ class MyApp(QMainWindow):
 
     def call_api_encrypt(self):
         url = "http://127.0.0.1:5000/api/caesar/encrypt"
+        plain = self.ui.textEdit.toPlainText().strip()
+        key_str = self.ui.textEdit_2.toPlainText().strip()
+        if not plain or not key_str.isdigit():
+            QMessageBox.warning(self, "Lỗi", "Vui lòng nhập Plain Text và Key là số nguyên!")
+            return
         payload = {
-            "plain_text": self.ui.textEdit.toPlainText(),
-            "key": self.ui.textEdit_2.toPlainText()
+            "plain_text": plain,
+            "key": key_str
         }
         try:
             response = requests.post(url, json=payload)
@@ -39,9 +44,14 @@ class MyApp(QMainWindow):
 
     def call_api_decrypt(self):
         url = "http://127.0.0.1:5000/api/caesar/decrypt"
+        cipher = self.ui.textEdit_3.toPlainText().strip()
+        key_str = self.ui.textEdit_2.toPlainText().strip()
+        if not cipher or not key_str.isdigit():
+            QMessageBox.warning(self, "Lỗi", "Vui lòng nhập CipherText và Key là số nguyên!")
+            return
         payload = {
-            "cipher_text": self.ui.textEdit_3.toPlainText(),
-            "key": self.ui.textEdit_2.toPlainText()
+            "cipher_text": cipher,
+            "key": key_str
         }
         try:
             response = requests.post(url, json=payload)

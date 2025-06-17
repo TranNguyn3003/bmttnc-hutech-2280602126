@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from cipher.rsa import RSACipher
 from cipher.ecc import ECCCipher
+from cipher.caesar.caesar_cipher import CaesarCipher
 
 app = Flask(__name__)
 
@@ -102,6 +103,26 @@ def ecc_verify_signature():
 
     return jsonify({'is_verified': is_verified})
     
+
+# --- CAESAR CIPHER ---
+@app.route('/api/caesar/encrypt', methods=['POST'])
+def caesar_encrypt():
+    data = request.json
+    plain_text = data.get('plain_text', '')
+    key = int(data.get('key', 0))
+    caesar = CaesarCipher()
+    encrypted = caesar.encrypt_text(plain_text, key)
+    return jsonify({'encrypt_message': encrypted})
+
+@app.route('/api/caesar/decrypt', methods=['POST'])
+def caesar_decrypt():
+    data = request.json
+    print("API decrypt nhận:", data)  # Log dữ liệu nhận được
+    cipher_text = data.get('cipher_text', '')
+    key = int(data.get('key', 0))
+    caesar = CaesarCipher()
+    decrypted = caesar.decrypt_text(cipher_text, key)
+    return jsonify({'decrypt_message': decrypted})
 
 #main function
 if __name__ == "__main__":
